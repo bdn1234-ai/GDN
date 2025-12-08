@@ -12,7 +12,7 @@ from util.preprocess import build_loc_net, construct_data
 from util.net_struct import get_feature_map, get_fc_graph_struc
 from util.iostream import printsep
 
-from datasets.TimeDataset import TimeDataset
+from my_datasets.TimeDataset import TimeDataset
 
 
 from models.GDN import GDN
