@@ -169,10 +169,10 @@ class GDN(nn.Module):
         # concatenate along feature dim
         x = torch.cat(gcn_outs, dim=1)  # [batch_num * node_num, dim * edge_set_num]
         x = x.view(batch_num, node_num, -1)  # [batch_num, node_num, dim * edge_set_num]
-
+        
         indexes = torch.arange(0, node_num, device=device)
         emb = self.embedding(indexes)  # [node_num, embed_dim] where embed_dim == x.size(-1)
-
+        emb = self.embed_proj(emb)
         # expand embedding across batch
         emb = emb.unsqueeze(0).repeat(batch_num, 1, 1)  # [batch_num, node_num, embed_dim]
 
